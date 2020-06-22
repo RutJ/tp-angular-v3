@@ -1,0 +1,55 @@
+<form >
+    <div class="row" *ngIf="mostrar">
+        <label for="categoria" >Seleccione categoría</label>
+        <select name="categoria" id="categoria" [(ngModel)]="pal.categoria" (change)="seleccionarPalabra()" >
+            <option value="1">Animal</option>
+            <option value="2">Navidad</option>
+            <option value="3">Util</option>
+        </select>
+    </div>
+    <div class="row alert alert-info" *ngIf="mostrar">
+        <label for="para" class="col-3">Vidas: {{cantidadVidas}}</label>
+        <label for="para" class="col-3"></label>
+        <label for="para" class="col-3">Puntaje: {{puntaje}}</label>
+        <label for="para" class="col-3"></label>
+    </div>
+    <div class="row" *ngIf="compararM">
+        <label for="">La palabra seleccionada es: {{palabra.palabraEspaniol | uppercase}} </label>
+    </div>
+    <div class="form-group text-center">
+        <img src="{{palabra.urlImagen}}"  height="280" alt="" class="card-img-top col-5 ">
+    </div>
+    <div class="row ">
+        <div class="text-center">
+            <input id="campo1" type="text" name="campo1" maxlength="1" class="col-1 " *ngIf="posiciones[0]" [(ngModel)]="letrasIngresadas[0]" (change)="compararLetra1()" > 
+            <input id="campo2" type="text" name="campo2" maxlength="1" class="col-1 " *ngIf="posiciones[1]" [(ngModel)]="letrasIngresadas[1]" (change)="compararLetra2()">
+            <input id="campo3" type="text" name="campo3" maxlength="1" class="col-1 " *ngIf="posiciones[2]" [(ngModel)]="letrasIngresadas[2]" (change)="compararLetra3()">
+            <input id="campo4" type="text" name="campo4" maxlength="1" class="col-1 " *ngIf="posiciones[3]" [(ngModel)]="letrasIngresadas[3]" (change)="compararLetra4()">
+            <input id="campo5" type="text" name="campo5" maxlength="1" class="col-1 " *ngIf="posiciones[4]" [(ngModel)]="letrasIngresadas[4]" (change)="compararLetra5()">
+            <input id="campo6" type="text" name="campo6" maxlength="1" class="col-1 " *ngIf="posiciones[5]" [(ngModel)]="letrasIngresadas[5]" (change)="compararLetra6()">
+            <input id="campo7" type="text" name="campo7" maxlength="1" class="col-1 " *ngIf="posiciones[6]" [(ngModel)]="letrasIngresadas[6]" (change)="compararLetra7()">
+            <input id="campo8" type="text" name="campo8" maxlength="1" class="col-1 " *ngIf="posiciones[7]" [(ngModel)]="letrasIngresadas[7]" (change)="compararLetra8()">
+        </div>
+        
+    </div>
+    <div class="form-group text-center" *ngIf="compararM">
+        <button type="button" class="btn btn-secondary ml-2 mr-2 center" *ngIf="compararM" (click)="compararPalabra()" >CompararPalabra</button>
+    </div>
+    <div class="form-group text-center" *ngIf="mostrarFelicitacion">
+        <label for="">Felicidades Completo la Categoria </label>
+    </div>
+    <div class="form-group text-center">
+        <button type="button" class="btn btn-secondary ml-2 mr-2 center" (click)="iniciarJuego()">Go</button>
+    </div>
+
+
+</form>
+<table class="table">
+    <tbody>
+      <tr *ngFor="let item of palabras">
+        <th scope="row">{{item.palabraIngles}}</th>
+      </tr>
+      
+    </tbody>
+  </table>
+
